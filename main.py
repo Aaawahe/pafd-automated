@@ -1,6 +1,7 @@
 import json
 import time
 import os
+import random
 from json import loads as json_loads
 from os import path as os_path, getenv
 from sys import exit as sys_exit
@@ -271,8 +272,17 @@ def get_account():
 
     return uid, psw
 
+def waitting():
+    """设置随机的等待时间 """"
+    random_min = random.randint(0,10)
+    random_sec = random.randint(0,60)
+    waitting_time = random_min * 60 + random_sec
+    time.sleep(waitting_time)
+    # print(random_min, random_sec, waitting_time)
 
 if __name__ == '__main__':
+    # 等待一段随机时间
+    waitting()
     uid, psw = get_account()
     # print(uid, psw)
     zlapp_login = 'https://uis.fudan.edu.cn/authserver/login?' \
